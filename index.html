@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Onboarding Command Center — SharePoint Preview (MOCKUP, not live data)</title>
+<title>Onboarding Command Center — Workspace Preview (MOCKUP, not live data)</title>
 <style>
   :root{
     --navy:#1F3864; --teal:#0E7C7B; --lteal:#DCEEEE; --lblue:#EAF1F8;
@@ -83,7 +83,7 @@
 </head>
 <body>
 
-<div class="mockup-banner">⚠ CLICKABLE MOCKUP — no real data, nothing is saved to SharePoint. For review only.</div>
+<div class="mockup-banner">⚠ CLICKABLE MOCKUP — no real data, nothing is saved to a shared workspace. For review only.</div>
 
 <header>
   <h1>🧭 Onboarding Command Center</h1>
@@ -146,7 +146,7 @@
 
   <!-- FORM RESPONSES COMPARE -->
   <section class="view" id="view-formcompare">
-    <h2 class="sectitle">Microsoft Form Responses — All Hires (Compare)</h2>
+    <h2 class="sectitle">Intake Form Responses — All Hires (Compare)</h2>
     <div class="note">Compare form responses by hire type; edits sync with each hire's checklist.</div>
     <div class="toolbar">
       <label>Compare Type:</label>
@@ -183,11 +183,11 @@
   </section>
 
 </main>
-<footer>Mockup only — built to preview design before creating anything in real SharePoint. Nothing here is connected to Outlook, Power Automate, or a live List.</footer>
+<footer>Mockup only — built to preview design before creating anything in a real shared workspace. Nothing here is connected to email, workflow automation, or a live list.</footer>
 
 <script>
 // ============ MOCK DATA ============
-const SUPERVISORS = ["Jamie Caldwell","Casey Whitfield","Sam Patel","Drew Mercer","Taylor Brooks","Chris Winslow"];
+const SUPERVISORS = ["Supervisor A","Supervisor B","Supervisor C","Supervisor D","Supervisor E","Supervisor F"];
 const TYPES = ["Employee","Intern","Internal Transfer","Contractor"];
 
 // ============ ORG REFERENCE DATA (added per request — lives here so nobody has to look it up) ============
@@ -205,7 +205,7 @@ const DEPT_OPTIONS = [
   {dept:"10990", department:"Contractor"},
 ];
 
-// ============ MICROSOFT FORM RESPONSE FIELDS (new) ============
+// ============ INTAKE FORM RESPONSE FIELDS (new) ============
 const EMPLOYEE_FIELDS = [
   {key:"fullName", label:"Full Name", type:"text"},
   {key:"employeeId", label:"Employee ID Number", type:"text"},
@@ -239,8 +239,8 @@ const FORM_FIELD_CONFIG = {
 };
 
 const MAIL_CONTACTS = {
-  "Pat Lindgren": "pat.lindgren@yourcompany.com",
-  "Drew Mercer": "drew.mercer@yourcompany.com",
+  "Sample Contact A": "contact-a@example.com",
+  "Sample Contact B": "contact-b@example.com",
 };
 
 function buildMailtoHref(h, mailCfg){
@@ -256,49 +256,49 @@ function resolveTaskLink(h, t){
 }
 
 const MAIL_STOPS = [
-  {code:"QVR-MN", label:"Northbridge Office", starred:true},
-  {code:"LPK-TA", label:"Larkspur Bay Office"},
-  {code:"FNB-OR", label:"Fernhollow Office", starred:true},
-  {code:"BRW-CK", label:"Brindlewick Office"},
-  {code:"WBT-SD", label:"Wobbleton Office"},
+  {code:"OFF-A", label:"Sample Office A", starred:true},
+  {code:"OFF-B", label:"Sample Office B"},
+  {code:"OFF-C", label:"Sample Office C", starred:true},
+  {code:"OFF-D", label:"Sample Office D"},
+  {code:"OFF-E", label:"Sample Office E"},
 ];
 
 const MASTER_TASKS = [
   {phase:"Pre-Onboarding", owner:"Supervisor", name:"Assign cubicle / workspace", link:"#space-planning", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
   {phase:"Pre-Onboarding", owner:"Supervisor", name:"Assign a buddy", link:"#buddy-guidelines", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
   {phase:"Pre-Onboarding", owner:"Supervisor", name:"Talk to new hire — gather needs", link:"#needs-checklist", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
-  {phase:"Pre-Onboarding", owner:"Supervisor", name:"Complete Microsoft Form", link:"https://forms.cloud.microsoft/pages/responsepage.aspx?id=PLACEHOLDER_FORM_ID&route=shorturl", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
-  {phase:"Pre-Onboarding", owner:"Supervisor", name:"Customize onboarding packet", link:"https://yourcompany-my.sharepoint.com/:w:/r/personal/jsmith_yourcompany_com/Documents/Admin/EdPi/New%20Hire/Onboarding%20Packet.docx?d=w67bf3bfcd9764e0582bc796e12e3390f&csf=1&web=1&e=TK5weq", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, linkBroken:true},
-  {phase:"Pre-Onboarding", owner:"Supervisor", name:"Submit Move Request", link:"https://yourcompany.service-now.com/Service_Catalog?id=sc_cat_item&table=sc_cat_item&sys_id=de3b7a794f806200d75e650f0310c782&searchTerm=move%20request", types:["Internal Transfer"], ticketed:true},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Review Microsoft Form responses", link:"https://forms.cloud.microsoft/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=PLACEHOLDER_FORM_ID", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Submit IT request / general hardware", link:"https://yourcompany.service-now.com/Service_Catalog?id=sc_cat_item&table=sc_cat_item&sys_id=bf7b852f4f35aa40d75e650f0310c74e", linkRemote:"https://yourcompany.service-now.com/Service_Catalog?id=sc_cat_item_guide&table=sc_cat_item&sys_id=dfdded92db023300f9c970e2399619c2&searchTerm=remote%20worker", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:true},
+  {phase:"Pre-Onboarding", owner:"Supervisor", name:"Complete intake form", link:"https://example.com/forms/intake", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
+  {phase:"Pre-Onboarding", owner:"Supervisor", name:"Customize onboarding packet", link:"https://example.com/files/onboarding-packet", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, linkBroken:true},
+  {phase:"Pre-Onboarding", owner:"Supervisor", name:"Submit Move Request", link:"https://example.com/requests/move", types:["Internal Transfer"], ticketed:true},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Review intake form responses", link:"https://example.com/forms/intake/responses", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Submit IT request / general hardware", link:"https://example.com/requests/hardware", linkRemote:"https://example.com/requests/remote-worker-hardware", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:true},
   {phase:"Pre-Onboarding", owner:"Admin", name:"Submit software request", link:"#software-request", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:true},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Submit VPN request (VPN/MCCS/Pulse)", link:"https://yourcompany.service-now.com/Service_Catalog?id=sc_cat_item&table=sc_cat_item&sys_id=1b4465964f619200d75e650f0310c7f2&searchTerm=vpn", types:["Employee","Intern","Contractor"], ticketed:true},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Submit badge request", link:"https://yourcompany.sharepoint.com/sites/STF_Corporate%20Security/SitePages/Access%20Control%20Badges.aspx", types:["Employee","Intern","Contractor"], ticketed:true},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Submit secure access request", link:"https://example.com/requests/secure-access", types:["Employee","Intern","Contractor"], ticketed:true},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Submit badge request", link:"https://example.com/requests/badge", types:["Employee","Intern","Contractor"], ticketed:true},
   {phase:"Pre-Onboarding", owner:"Admin", name:"Clean / prep cubicle (Workspace Cleaning Request)", link:"#cleaning-request", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, optionalWhenRemote:["Employee","Contractor"],
     mail:{
-      fallbackTo:"facilities@yourcompany.com",
+      fallbackTo:"facilities@example.com",
       subject:(h)=>`Workspace Cleaning Request for New Employee`,
       body:(h)=>`Hello,\nPlease prepare the following workspace for a new employee.\nWork Location: ${h.mailStop}\nRequested Service:\n\u2610 Standard Cleaning: Vacuum the office and wipe down all surfaces.\n\u2610 Deep Cleaning: Perform a thorough cleaning of the office, including all surfaces and hard-to-reach areas.\n\u2610 Deep Cleaning with Item Removal: Remove existing items from the office and perform a thorough cleaning of the workspace.\nRequested Completion Date: ____________\nThank you!`
     }
   },
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Add to distribution list", link:"https://admin.cloud.microsoft/exchange?#/groups", types:["Employee","Intern","Internal Transfer"], ticketed:false},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Add to distribution list", link:"https://example.com/groups/distribution", types:["Employee","Intern","Internal Transfer"], ticketed:false},
   {phase:"Pre-Onboarding", owner:"Admin", name:"Set up safety/compliance training", link:"#safety-training-setup", types:["Employee","Intern"], ticketed:false,
     mail:{
-      fallbackTo:"safetytraining@yourcompany.com",
+      fallbackTo:"safety-training@example.com",
       subject:(h)=>`Safety Training Setup - New Hire`,
-      body:(h)=>`Hello,\nPlease set up safety/compliance training for the following new hire:\nName: ${h.name}\nWorkforce ID #: \nSupervisor: ${h.supervisor}\nOffice Location / Address: ${h.location}\nEmail Address: \nQL Lab Access Needed: \nThank you.`
+      body:(h)=>`Hello,\nPlease set up safety/compliance training for the following new hire:\nName: ${h.name}\nWorkforce ID #: \nSupervisor: ${h.supervisor}\nOffice Location / Address: ${h.location}\nEmail Address: \nSample Lab Access Needed: \nThank you.`
     }
   },
   {phase:"Pre-Onboarding", owner:"Admin", name:"Prepare welcome basket", link:"#welcome-basket", types:["Employee","Intern"], ticketed:false},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Prepare name plate", link:"https://yourcompany.sharepoint.com/:w:/r/sites/msteams_39c291/_layouts/15/Doc.aspx?sourcedoc=%7B491BDEFB-D7E1-4250-910A-B607F687F86B%7D&file=Name%20Plate%20Insert%20Template.docx&action=default&mobileredirect=true&web=1", types:["Employee","Intern","Internal Transfer"], ticketed:false},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Add new hire to Org Chart", link:"https://yourcompany.sharepoint.com/:p:/r/sites/MTE-EdPiCapabilityGroup-EdPiStaff/_layouts/15/Doc.aspx?sourcedoc=%7B9D16BA8F-BC7F-41B0-A2F5-D6BFC06214E0%7D&file=Org%20Chart.pptx&action=edit&mobileredirect=true&web=1", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
-  {phase:"Pre-Onboarding", owner:"Admin", name:"Add new hire to QL Seating Chart", link:"https://yourcompany.sharepoint.com/:p:/r/sites/msteams_39c291/_layouts/15/Doc.aspx?sourcedoc=%7B57CE719F-9097-418B-8C38-4ADBDF33C590%7D&file=QL-00%20Seating%20Chart.pptx&action=edit&mobileredirect=true&web=1", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
-  {phase:"Post-Onboarding", owner:"Supervisor", name:"Review onboarding packet with new hire", link:"https://yourcompany-my.sharepoint.com/:w:/r/personal/jsmith_yourcompany_com/Documents/Admin/EdPi/New%20Hire/Onboarding%20Packet.docx?d=w67bf3bfcd9764e0582bc796e12e3390f&csf=1&web=1&e=TK5weq", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, linkBroken:true},
-  {phase:"Post-Onboarding", owner:"Supervisor", name:"Draft org announcement (template)", link:"https://yourcompany.sharepoint.com/sites/ST/_layouts/15/WopiFrame.aspx?sourcedoc=%7bE9901778-3F5B-47A9-AFFA-437D71C9082A%7d&file=OrgAnnouncements_template_newbrand.docx&action=default", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, needsConfirm:true},
-  {phase:"Post-Onboarding", owner:"Supervisor", name:"Send org announcement to Kelly / Norris", link:"#announcement", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false,
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Prepare name plate", link:"https://example.com/templates/name-plate", types:["Employee","Intern","Internal Transfer"], ticketed:false},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Add new hire to org chart", link:"https://example.com/files/org-chart", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
+  {phase:"Pre-Onboarding", owner:"Admin", name:"Add new hire to sample lab seating chart", link:"https://example.com/files/lab-seating-chart", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
+  {phase:"Post-Onboarding", owner:"Supervisor", name:"Review onboarding packet with new hire", link:"https://example.com/files/onboarding-packet", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, linkBroken:true},
+  {phase:"Post-Onboarding", owner:"Supervisor", name:"Draft org announcement (template)", link:"https://example.com/templates/org-announcement", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false, needsConfirm:true},
+  {phase:"Post-Onboarding", owner:"Supervisor", name:"Send org announcement", link:"#announcement", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false,
     mail:{
-      fallbackTo:"pat.lindgren@yourcompany.com",
+      fallbackTo:"announcements@example.com",
       subject:(h)=>`Org Announcement — ${h.name} (${h.type})`,
       body:(h)=>`Hi,\n\nPlease share an org announcement for our new hire:\n\nName: ${h.name}\nType: ${h.type}\nSupervisor: ${h.supervisor}\nStart Date: ${fmt(h.start)}\n\nThanks,\n${h.admin}`
     }
@@ -307,12 +307,12 @@ const MASTER_TASKS = [
   {phase:"Post-Onboarding", owner:"Supervisor", name:"90-day reminder — thank the buddy", link:"#calendar", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
   {phase:"Post-Onboarding", owner:"Admin", name:"Add to time & attendance system", link:"#time-attendance-setup", types:["Employee","Intern","Internal Transfer"], ticketed:false,
     mail:{
-      fallbackTo:"timeattendance@yourcompany.com",
+      fallbackTo:"time-attendance@example.com",
       subject:(h)=>`Time & Attendance System Access Request`,
       body:(h)=>`Hello,\nPlease add the following new employee to the time & attendance system and grant proxy access to their supervisor.\nEmployee: ${h.name}\nSupervisor: ${h.supervisor}\nThank you.`
     }
   },
-  {phase:"Post-Onboarding", owner:"Admin", name:"Add to EDPI Teams channel", link:"#edpi-teams", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
+  {phase:"Post-Onboarding", owner:"Admin", name:"Add to department channel", link:"#department-channel", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
   {phase:"Post-Onboarding", owner:"Admin", name:"Send calendar event to new hire", link:"#calendar", types:["Employee","Intern","Internal Transfer","Contractor"], ticketed:false},
 ];
 
@@ -320,13 +320,13 @@ function daysFromToday(n){ const d=new Date(); d.setDate(d.getDate()+n); return 
 function fmt(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
 
 let HIRES = [
-  {id:1, name:"Jordan Reyes", type:"Employee", supervisor:"Alex Donovan", admin:"You", location:"Rivermont, OH", start:daysFromToday(10), source:"Pat Lindgren", primaryTicket:"CASE-20001", mailStop:"QVR-MN", remote:false, dept:"10220",
-    formResponse:{fullName:"Jordan Reyes", employeeId:"812345", supervisorName:"Alex Donovan", officeLocation:"Northbridge Office, Room 7A", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"QuasarSketch Atelier 7", facilityAccessNotes:"None required"}},
-  {id:2, name:"Avery Chen", type:"Employee", supervisor:"Taylor Brooks", admin:"You", location:"Westbrook, IL", start:daysFromToday(19), source:"Pat Lindgren", primaryTicket:"CASE-20002", mailStop:"FNB-OR", remote:false, dept:"10450",
-    formResponse:{fullName:"Avery Chen", employeeId:"812346", supervisorName:"Taylor Brooks", officeLocation:"Fernhollow Office, Room 4C", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"QuasarSketch Atelier 7 + NebulaVault Keeper 4", facilityAccessNotes:"Needs lab access badge for QL building"}},
-  {id:3, name:"Morgan Hale", type:"Internal Transfer", supervisor:"Casey Whitfield", admin:"You", location:"Lakeside, GA", start:daysFromToday(19), source:"Pat Lindgren", primaryTicket:"CASE-20003", mailStop:"BRW-CK", remote:false, dept:"10220",
-    formResponse:{fullName:"Morgan Hale", employeeId:"812347", supervisorName:"Casey Whitfield", officeLocation:"Brindlewick Office, Room 6B", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"Yes", computerType:"Standard Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"OrbitPlan Task Loom", facilityAccessNotes:"Safety orientation required for site access"}},
-  {id:4, name:"Riley Thompson", type:"Intern", supervisor:"Sam Patel", admin:"You", location:"Fairhaven, PA", start:daysFromToday(1), source:"Pat Lindgren", primaryTicket:"CASE-20004", mailStop:"LPK-TA", remote:false, dept:"10560"},
+  {id:1, name:"New Hire A", type:"Employee", supervisor:"Supervisor A", admin:"Admin A", location:"Sample City A", start:daysFromToday(10), source:"Sample Contact A", primaryTicket:"CASE-10001", mailStop:"OFF-A", remote:false, dept:"10101",
+    formResponse:{fullName:"New Hire A", employeeId:"EMP-10001", supervisorName:"Supervisor A", officeLocation:"Sample Office A, Room 1", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"Sample Design Suite", facilityAccessNotes:"None required"}},
+  {id:2, name:"New Hire B", type:"Employee", supervisor:"Supervisor E", admin:"Admin A", location:"Sample City B", start:daysFromToday(19), source:"Sample Contact A", primaryTicket:"CASE-10002", mailStop:"OFF-C", remote:false, dept:"10102",
+    formResponse:{fullName:"New Hire B", employeeId:"EMP-10002", supervisorName:"Supervisor E", officeLocation:"Sample Office C, Room 2", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"Sample Design Suite + Sample File Vault", facilityAccessNotes:"Needs a sample lab access badge"}},
+  {id:3, name:"New Hire C", type:"Internal Transfer", supervisor:"Supervisor B", admin:"Admin A", location:"Sample City C", start:daysFromToday(19), source:"Sample Contact A", primaryTicket:"CASE-10003", mailStop:"OFF-D", remote:false, dept:"10101",
+    formResponse:{fullName:"New Hire C", employeeId:"EMP-10003", supervisorName:"Supervisor B", officeLocation:"Sample Office D, Room 3", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"Yes", computerType:"Standard Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"Sample Project Planner", facilityAccessNotes:"Safety orientation required for site access"}},
+  {id:4, name:"New Hire D", type:"Intern", supervisor:"Supervisor C", admin:"Admin A", location:"Sample City D", start:daysFromToday(1), source:"Sample Contact A", primaryTicket:"CASE-10004", mailStop:"OFF-B", remote:false, dept:"10105"},
 ];
 
 HIRES.forEach(h=>{
@@ -338,9 +338,9 @@ HIRES.forEach(h=>{
 const SAVED = JSON.parse(localStorage.getItem("onboarding_mock_state")||"null");
 if(SAVED){
   const oldSoftwareNames = {
-    "Solidworks":"QuasarSketch Atelier 7",
-    "Solidworks 2025 + PDM Vault":"QuasarSketch Atelier 7 + NebulaVault Keeper 4",
-    "MS Project":"OrbitPlan Task Loom",
+    "Sample legacy design tool":"Sample Design Suite",
+    "Sample legacy design tool + file vault":"Sample Design Suite + Sample File Vault",
+    "Sample legacy project tool":"Sample Project Planner",
   };
   HIRES = SAVED.map(h=>({...h, start:new Date(h.start),
     mailStop:MAIL_STOPS.some(m=>m.code===h.mailStop)?h.mailStop:MAIL_STOPS[0].code,
@@ -419,10 +419,10 @@ function renderDashboard(){
 }
 
 let intakeRows = [
-  {date:fmt(daysFromToday(-14)), manager:"Alex Donovan", location:"Rivermont, OH", candidate:"Jordan Reyes", ie:"External", type:"Employee", dept:"10220", start:fmt(daysFromToday(10)), admin:"You"},
-  {date:fmt(daysFromToday(-13)), manager:"Taylor Brooks", location:"Westbrook, IL", candidate:"Avery Chen", ie:"External", type:"Employee", dept:"10450", start:fmt(daysFromToday(19)), admin:"You"},
-  {date:fmt(daysFromToday(-13)), manager:"Casey Whitfield", location:"Lakeside, GA", candidate:"Morgan Hale", ie:"Internal", type:"Internal Transfer", dept:"10220", start:fmt(daysFromToday(19)), admin:"You"},
-  {date:fmt(daysFromToday(-13)), manager:"Sam Patel", location:"Fairhaven, PA", candidate:"Riley Thompson", ie:"External", type:"Intern", dept:"10560", start:fmt(daysFromToday(1)), admin:"You"},
+  {date:fmt(daysFromToday(-14)), manager:"Supervisor A", location:"Sample City A", candidate:"New Hire A", ie:"External", type:"Employee", dept:"10101", start:fmt(daysFromToday(10)), admin:"Admin A"},
+  {date:fmt(daysFromToday(-13)), manager:"Supervisor E", location:"Sample City B", candidate:"New Hire B", ie:"External", type:"Employee", dept:"10102", start:fmt(daysFromToday(19)), admin:"Admin A"},
+  {date:fmt(daysFromToday(-13)), manager:"Supervisor B", location:"Sample City C", candidate:"New Hire C", ie:"Internal", type:"Internal Transfer", dept:"10101", start:fmt(daysFromToday(19)), admin:"Admin A"},
+  {date:fmt(daysFromToday(-13)), manager:"Supervisor C", location:"Sample City D", candidate:"New Hire D", ie:"External", type:"Intern", dept:"10105", start:fmt(daysFromToday(1)), admin:"Admin A"},
 ];
 function renderIntake(){
   const tbody = document.querySelector("#intakeTable tbody");
@@ -440,7 +440,7 @@ function renderIntake(){
 }
 function addMockIntakeRow(){
   const n = intakeRows.length+1;
-  intakeRows.push({date:fmt(new Date()), manager:"(new manager)", location:"Rivermont, OH", candidate:"New Hire "+n, ie:"External", type:"Employee", dept:"", start:fmt(daysFromToday(14)), admin:"You"});
+  intakeRows.push({date:fmt(new Date()), manager:"(new manager)", location:"Sample City", candidate:"New Hire "+n, ie:"External", type:"Employee", dept:"", start:fmt(daysFromToday(14)), admin:"Admin A"});
   renderIntake();
 }
 
@@ -532,7 +532,7 @@ function setRemote(hid,val){ const h=HIRES.find(x=>x.id===parseInt(hid)); h.remo
 function renderFormResponse(h){
   const fields = FORM_FIELD_CONFIG[h.type];
   if(!fields){
-    return `<div class="form-response-box"><div class="form-response-head">📋 Microsoft Form Response</div>
+    return `<div class="form-response-box"><div class="form-response-head">📋 Intake Form Response</div>
       <div class="note" style="margin-top:0;">Form fields are unavailable for this hire type.</div></div>`;
   }
   const rows = fields.map(f=>{
@@ -549,7 +549,7 @@ function renderFormResponse(h){
     return `<div class="form-field"><label>${f.label}</label>${inputHtml}</div>`;
   }).join("");
   return `<div class="form-response-box">
-    <div class="form-response-head">📋 Microsoft Form Response — ${h.type}</div>
+    <div class="form-response-head">📋 Intake Form Response — ${h.type}</div>
     <div class="form-response-sub">Transcribed from the supervisor's submitted form (manual entry in this mockup — see note below on automating this).</div>
     <div class="form-response-grid">${rows}</div>
   </div>`;
@@ -625,8 +625,8 @@ document.getElementById("notifyRecipient").addEventListener("change", renderTime
 
 const EMAIL_TEMPLATES = {
   logged: {
-    supervisor: (h)=>({subj:`New hire assigned to you: ${h.name}`, body:`Hi ${h.supervisor},<br><br>${h.name} (${h.type}) has been logged for onboarding, starting ${fmt(h.start)}.<br>Please begin your pre-onboarding steps: assign a cubicle, assign a buddy, talk to ${h.name.split(' ')[0]} about their needs, complete the Microsoft Form, and customize the onboarding packet.<br><br>Open checklist →`}),
-    admin: (h)=>({subj:`New hire logged: ${h.name} — admin prep can begin after supervisor's form`, body:`A new hire (${h.name}, ${h.type}) was just logged. Supervisor ${h.supervisor} has been notified to start their pre-onboarding steps. You'll be notified again once their Microsoft Form is submitted.`}),
+    supervisor: (h)=>({subj:`New hire assigned to you: ${h.name}`, body:`Hi ${h.supervisor},<br><br>${h.name} (${h.type}) has been logged for onboarding, starting ${fmt(h.start)}.<br>Please begin your pre-onboarding steps: assign a cubicle, assign a buddy, talk to ${h.name.split(' ')[0]} about their needs, complete the intake form, and customize the onboarding packet.<br><br>Open checklist →`}),
+    admin: (h)=>({subj:`New hire logged: ${h.name} — admin prep can begin after supervisor's form`, body:`A new hire (${h.name}, ${h.type}) was just logged. Supervisor ${h.supervisor} has been notified to start their pre-onboarding steps. You'll be notified again once their intake form is submitted.`}),
   },
   before: {
     supervisor: (h)=>({subj:`Reminder: ${h.name} starts in 5 days — finish pre-onboarding tasks`, body:`Hi ${h.supervisor},<br><br>${h.name} starts ${fmt(h.start)} — 5 days from now. Please make sure all pre-onboarding tasks are complete before then.<br><br>Open checklist →`}),
@@ -634,7 +634,7 @@ const EMAIL_TEMPLATES = {
   },
   startday: {
     supervisor: (h)=>({subj:`${h.name} starts today — review the onboarding packet`, body:`Hi ${h.supervisor},<br><br>Today is ${h.name}'s first day. Please review the onboarding packet with them, send the org announcement, and schedule a welcome lunch.<br><br>Open checklist →`}),
-    admin: (h)=>({subj:`${h.name} starts today — complete day-of admin tasks`, body:`Today is ${h.name}'s first day. Please add them to the time & attendance system, the EDPI Teams channel, and send their calendar event.`}),
+    admin: (h)=>({subj:`${h.name} starts today — complete day-of admin tasks`, body:`Today is ${h.name}'s first day. Please add them to the time & attendance system, the department channel, and send their calendar event.`}),
   },
   after: {
     supervisor: (h)=>({subj:`Follow-up: wrap up ${h.name}'s onboarding checklist`, body:`Hi ${h.supervisor},<br><br>It's been 7 days since ${h.name} started (${fmt(h.start)}). Please make sure every task on your checklist is marked complete. (Reminder: the 90-day buddy recognition task will come due later — no action needed yet.)<br><br>Open checklist →`}),
@@ -647,7 +647,7 @@ function showEmail(hid, key, recipient){
   document.getElementById("emailPreviewBox").innerHTML = `
     <div class="email-preview">
       <div class="subj">✉️ ${tmpl.subj}</div>
-      <div class="meta">To: ${recipient==='supervisor'?h.supervisor:h.admin} &nbsp;|&nbsp; Trigger: ${key} &nbsp;|&nbsp; Sent via: Power Automate (proposed)</div>
+      <div class="meta">To: ${recipient==='supervisor'?h.supervisor:h.admin} &nbsp;|&nbsp; Trigger: ${key} &nbsp;|&nbsp; Sent via: workflow automation (proposed)</div>
       <div>${tmpl.body}</div>
     </div>`;
 }
