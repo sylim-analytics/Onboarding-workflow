@@ -276,16 +276,11 @@ function resolveTaskLink(h, t){
 }
 
 const MAIL_STOPS = [
-  {code:"SP-QL-01-03", label:"QL", starred:true},
-  {code:"SP-QL-01-02", label:"QL", starred:false},
-  {code:"SP-QL-00-02", label:"QL", starred:true},
-  {code:"HP-ME-02-01", label:"Decker"},
-  {code:"SP-TD-01-02", label:"TD - S1"},
-  {code:"SP-TD-02-02", label:"TD - S2"},
-  {code:"SP-TD-01-03", label:"TD - N1"},
-  {code:"SP-TD-02-03", label:"TD - N2", correctedTypo:true},
-  {code:"HE-NO", label:"Hemlock"},
-  {code:"CL-HQ", label:"Charlotte"},
+  {code:"QVR-MN", label:"Northbridge Office", starred:true},
+  {code:"LPK-TA", label:"Larkspur Bay Office"},
+  {code:"FNB-OR", label:"Fernhollow Office", starred:true},
+  {code:"BRW-CK", label:"Brindlewick Office"},
+  {code:"WBT-SD", label:"Wobbleton Office"},
 ];
 
 const MASTER_TASKS = [
@@ -345,13 +340,13 @@ function daysFromToday(n){ const d=new Date(); d.setDate(d.getDate()+n); return 
 function fmt(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
 
 let HIRES = [
-  {id:1, name:"Jordan Reyes", type:"Employee", supervisor:"Alex Donovan", admin:"You", location:"Rivermont, OH", start:daysFromToday(10), source:"Pat Lindgren", primaryTicket:"CASE-20001", mailStop:"SP-QL-01-03", remote:false, dept:"10220",
-    formResponse:{fullName:"Jordan Reyes", employeeId:"812345", supervisorName:"Alex Donovan", officeLocation:"SP-QL-02-A101", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"Solidworks", facilityAccessNotes:"None required"}},
-  {id:2, name:"Avery Chen", type:"Employee", supervisor:"Taylor Brooks", admin:"You", location:"Westbrook, IL", start:daysFromToday(19), source:"Pat Lindgren", primaryTicket:"CASE-20002", mailStop:"SP-QL-00-02", remote:false, dept:"10450",
-    formResponse:{fullName:"Avery Chen", employeeId:"812346", supervisorName:"Taylor Brooks", officeLocation:"SP-QL-00-B4C", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"Solidworks 2025 + PDM Vault", facilityAccessNotes:"Needs lab access badge for QL building"}},
-  {id:3, name:"Morgan Hale", type:"Internal Transfer", supervisor:"Casey Whitfield", admin:"You", location:"Lakeside, GA", start:daysFromToday(19), source:"Pat Lindgren", primaryTicket:"CASE-20003", mailStop:"HP-ME-02-01", remote:false, dept:"10220",
-    formResponse:{fullName:"Morgan Hale", employeeId:"812347", supervisorName:"Casey Whitfield", officeLocation:"SP-QL-00-A6B (layout confirmed with Taylor Brooks)", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"Yes", computerType:"Standard Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"MS Project", facilityAccessNotes:"OSHA 30 certification required for site access"}},
-  {id:4, name:"Riley Thompson", type:"Intern", supervisor:"Sam Patel", admin:"You", location:"Fairhaven, PA", start:daysFromToday(1), source:"Pat Lindgren", primaryTicket:"CASE-20004", mailStop:"CL-HQ", remote:false, dept:"10560"},
+  {id:1, name:"Jordan Reyes", type:"Employee", supervisor:"Alex Donovan", admin:"You", location:"Rivermont, OH", start:daysFromToday(10), source:"Pat Lindgren", primaryTicket:"CASE-20001", mailStop:"QVR-MN", remote:false, dept:"10220",
+    formResponse:{fullName:"Jordan Reyes", employeeId:"812345", supervisorName:"Alex Donovan", officeLocation:"Northbridge Office, Room 7A", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"QuasarSketch Atelier 7", facilityAccessNotes:"None required"}},
+  {id:2, name:"Avery Chen", type:"Employee", supervisor:"Taylor Brooks", admin:"You", location:"Westbrook, IL", start:daysFromToday(19), source:"Pat Lindgren", primaryTicket:"CASE-20002", mailStop:"FNB-OR", remote:false, dept:"10450",
+    formResponse:{fullName:"Avery Chen", employeeId:"812346", supervisorName:"Taylor Brooks", officeLocation:"Fernhollow Office, Room 4C", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"No", computerType:"Performance Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"QuasarSketch Atelier 7 + NebulaVault Keeper 4", facilityAccessNotes:"Needs lab access badge for QL building"}},
+  {id:3, name:"Morgan Hale", type:"Internal Transfer", supervisor:"Casey Whitfield", admin:"You", location:"Lakeside, GA", start:daysFromToday(19), source:"Pat Lindgren", primaryTicket:"CASE-20003", mailStop:"BRW-CK", remote:false, dept:"10220",
+    formResponse:{fullName:"Morgan Hale", employeeId:"812347", supervisorName:"Casey Whitfield", officeLocation:"Brindlewick Office, Room 6B", employmentCategory:"Full-Time", workArrangement:"On-site", laptopBag:"Yes", computerType:"Standard Laptop", monitorsNeeded:"2", cellPhoneNeeded:"Yes", specialSoftware:"OrbitPlan Task Loom", facilityAccessNotes:"Safety orientation required for site access"}},
+  {id:4, name:"Riley Thompson", type:"Intern", supervisor:"Sam Patel", admin:"You", location:"Fairhaven, PA", start:daysFromToday(1), source:"Pat Lindgren", primaryTicket:"CASE-20004", mailStop:"LPK-TA", remote:false, dept:"10560"},
 ];
 
 HIRES.forEach(h=>{
@@ -361,7 +356,17 @@ HIRES.forEach(h=>{
 });
 
 const SAVED = JSON.parse(localStorage.getItem("onboarding_mock_state")||"null");
-if(SAVED){ HIRES = SAVED.map(h=>({...h, start:new Date(h.start)})); }
+if(SAVED){
+  const oldSoftwareNames = {
+    "Solidworks":"QuasarSketch Atelier 7",
+    "Solidworks 2025 + PDM Vault":"QuasarSketch Atelier 7 + NebulaVault Keeper 4",
+    "MS Project":"OrbitPlan Task Loom",
+  };
+  HIRES = SAVED.map(h=>({...h, start:new Date(h.start),
+    mailStop:MAIL_STOPS.some(m=>m.code===h.mailStop)?h.mailStop:MAIL_STOPS[0].code,
+    formResponse:h.formResponse?{...h.formResponse, specialSoftware:oldSoftwareNames[h.formResponse.specialSoftware]||h.formResponse.specialSoftware}:h.formResponse
+  }));
+}
 function persist(){ localStorage.setItem("onboarding_mock_state", JSON.stringify(HIRES)); }
 
 function isTaskCountable(h, t){
