@@ -3,8 +3,8 @@
 A clickable prototype of a new-hire onboarding tracker, designed to replace scattered emails and spreadsheets with one place to manage every hire from intake to day 90.
 
 **Live demo:** https://sylim-analytics.github.io/Onboarding-workflow/
-
 **Status:** the production version is being built in Microsoft 365 (see below).
+**Built with:** HTML, CSS, JavaScript, Claude AI, and Visual Studio Code.
 
 > The demo is a design mockup. All names, emails, links, and data are fictional, and nothing is saved to any external system.
 
